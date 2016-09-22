@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>微商城</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <script type="text/javascript">
+    (function (doc, win) {
+        var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    window.clientWidth = docEl.clientWidth;
+                    if (!window.clientWidth) return;
+                    docEl.style.fontSize = 20 * (window.clientWidth / 320) + 'px';
+                    window.base = 20 * (window.clientWidth / 320);
+                };
+
+        try {
+            recalc();
+        } catch (e) {
+
+        }
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
+    </script>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/main.css?v=22'">
+</head>
+<body>
+    <div class="order-wrap">
+        <nav>
+            <span class="active">待付款</span>
+            <span>待取货</span>
+            <span>已取货</span>
+        </nav>
+        <ul class="product-item-wrap">
+            <li class="product-item clearfix">
+                <div class="left fl">
+                    <span class="check"></span>
+                    <img src="img/bottle_m.png" alt="" />
+                </div>
+                <div class="right fl">
+                    <h4>武夷山矿泉水</h4>
+                    <div class="desc">取自千万年未被触动过的武夷山脉300米深处的花岗岩裂隙水</div>
+                    <div class="specs">规格：300ml*24瓶</div>
+                    <div>
+                        <span class="price"><small>￥</small>198</span>
+                        <span class="num">x1</span>
+                    </div>
+                </div>
+                <div class="bottom order-action">
+                    <span>取消订单</span>
+                    <span class="guide-click">找人代付</span>
+                    <span class="guide-click online-pay-btn">在线支付</span>
+                </div>
+            </li>
+        </ul>
+        <ul class="product-item-wrap" style="display:none">
+            <li class="product-item clearfix">
+                <div class="left fl">
+                    <span class="check"></span>
+                    <img src="img/bottle_m.png" alt="" />
+                </div>
+                <div class="right fl">
+                    <h4>武夷山矿泉水<span class="stock">库存：100箱</span></h4>
+                    <div class="specs">规格：300ml*24瓶</div>
+                    <br>
+                    <div class="clearfix">
+                        <div class="fl">
+                            <span class="price big"><small>￥</small>198</span>
+                        </div>
+                        <p class="buynum fr">
+                            <span class="redu kuang">-</span>
+                            <input class="input-num" type="number" name="num" value="1">
+                            <span class="add kuang">+</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="bottom order-action">
+                    <span>转赠</span>
+                    <span class="guide-click pickup-btn">提货</span>
+                </div>
+            </li>
+        </ul>
+        <ul class="product-item-wrap" style="display:none">
+            <li class="product-item clearfix">
+                <div class="left fl">
+                    <img src="img/bottle_m.png" alt="" />
+                </div>
+                <div class="right fl">
+                    <h4>武夷山矿泉水<span class="price-top"><small>￥</small>99</span></h4>
+                    <div class="specs">规格：300ml*24瓶</div>
+                    <br>
+                    <div>
+                        <span class="time">取货时间：2016年9月10日</span>
+                        <span class="num">x1</span>
+                    </div>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+    <div class="pay-action pay-action-only">
+        <div class="check-wrap">
+            <span class="check checkall"></span>
+            <span>全选</span>
+        </div>
+        <div class="total-money">
+            <span>总额</span>
+            <span>￥99,0</span>
+        </div>
+        <div class="btn btn1-r -btn pay-all-btn">合并付款</div>
+    </div>
+</body>
+<script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+
+<script>
+$(function(){
+    // ceshi
+    // var i = 2;
+    // $('nav span').removeClass('active').eq(i).addClass('active');
+    // $('.product-item-wrap').hide().eq(i).show();
+
+    $('nav span').on('click',function(){
+        var i = $(this).index();
+        if (i != 0) {
+            $('.pay-action').hide();
+        }else {
+            $('.pay-action').show();
+        }
+        $('nav span').removeClass('active').eq(i).addClass('active');
+        $('.product-item-wrap').hide().eq(i).show();
+    })
+    $('.pickup-btn').on('click',function(){
+        window.location.href = 'pickup.html';
+    })
+    $('.bottom span').on('click',function(){
+        event.stopPropagation();
+    })
+    function payF(){
+        event.stopPropagation();
+        window.location.href = 'pay.html';
+    }
+    $('.online-pay-btn').on('click',payF);
+    $('.pay-all-btn').on('click',payF);
+    $('.check').on('click',function(){
+        $(this).toggleClass('checked');
+    })
+    $('.checkall').on('click',function(){
+        $(this).parents('body').find('.check').addClass('checked');
+    })
+})
+
+</script>
+</html>

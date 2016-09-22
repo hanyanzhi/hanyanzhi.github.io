@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>微商城</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <script type="text/javascript">
+    (function (doc, win) {
+        var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    window.clientWidth = docEl.clientWidth;
+                    if (!window.clientWidth) return;
+                    docEl.style.fontSize = 20 * (window.clientWidth / 320) + 'px';
+                    window.base = 20 * (window.clientWidth / 320);
+                };
+
+        try {
+            recalc();
+        } catch (e) {
+
+        }
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
+    </script>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/main.css?v='+Math.random()+'">
+</head>
+<body>
+    <div class="share-container">
+        <div class="share-img">
+            <img src="img/product-detail.png" alt="" />
+        </div>
+        <div class="share-content">
+            <div class="title-wrap">
+                <h3 class="title">武夷山矿泉水</h3>
+                <p class="desc">
+                    源自武夷 世界双遗 300米深 天然纯净 口感滑润 味觉回甘 微量元素 有益健康 佐茶好水 冲泡佳饮 武夷山水品着喝
+                </p>                
+            </div>
+            <p class="give give-specs">
+                <span>规格：</span>
+                <span>300ml*24瓶</span>
+                </span>
+            </p>
+            <p class="give give-num">
+                <span>赠送数量：</span>
+                <span>12箱</span>
+            </p>
+        </div>
+        <div class="share-btn">
+            分享给朋友
+        </div>
+
+    </div>
+</body>
+<script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+
+<script>
+    $('.specs-num').click(function(){
+        var i = $(this).index();
+       $('.specs-num').removeClass('selected').eq(i).addClass('selected');
+    })
+
+</script>
+</html>

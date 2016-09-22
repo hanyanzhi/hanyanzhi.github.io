@@ -1,0 +1,78 @@
+@charset "UTF-8";
+/* easy-animation.scss */
+html {
+  font-family: 'MicrosoftYaHei', '微软雅黑', 'STHeitiSC';
+}
+*{
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;/*当用户点击iOS的Safari浏览器中的链接或JavaScript的可点击的元素时，覆盖显示的高亮颜色。*/
+    margin: 0;
+    padding: 0;
+}
+div{
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;/*用户不能选择元素中的任何内容*/
+    -webkit-user-select: none;
+}
+html,body{
+    width: 100%;
+    height: 100%;
+    background-color: #f6f6f6;
+    overflow-x: hidden;
+    user-select: none;
+    -webkit-user-select:none;
+    /*font-family: 'MicrosoftYaHei', '微软雅黑', 'STHeitiSC';*/
+    font-family: '微软雅黑';
+}
+.fl {
+    float: left;
+}
+.fr {
+    float: right;
+}
+.clearfix{
+    zoom: 1;
+}
+.clearfix:after{
+    display: block;
+    content: '';
+    clear: both;
+    overflow: hidden;
+    height: 0;
+}
+ul,ol,li{
+    list-style-type: none;
+}
+a{
+    text-decoration: none;
+    color: #fff;
+}
+img{
+    border: none;
+    outline: none;
+}
+input,select{
+    outline: none;
+    border: none;
+    background: none;
+}
+/*#container{
+    width: 16rem;
+    height: 100%;
+    margin: 0 auto;
+}
+.page ,.layer{
+    width: 16rem;
+    height: 100%;
+    overflow-x: hidden;
+}
+.layer{
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.page .inner,.layer .inner{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}*/

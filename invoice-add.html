@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>微商城</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <script type="text/javascript">
+    (function (doc, win) {
+        var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    window.clientWidth = docEl.clientWidth;
+                    if (!window.clientWidth) return;
+                    docEl.style.fontSize = 20 * (window.clientWidth / 320) + 'px';
+                    window.base = 20 * (window.clientWidth / 320);
+                };
+
+        try {
+            recalc();
+        } catch (e) {
+
+        }
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
+    </script>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/main.css?v=2222'">
+</head>
+<body>
+    <div class="invoice-add-wrap">
+        <form class="invoice-add-form">
+            <div class="title">
+                <span>发票抬头</span>
+                <input type="text" name="name" value="北京红拾科技有限公司">
+            </div>
+            <div class="type">
+                <span>发票类型</span>
+                <div class="type-wrap">
+                    <p class="type-item">
+                        <span class="select selected"></span>
+                        <span>公司</span>
+                    </p>
+                    <p class="type-item">
+                        <span class="select"></span>
+                        <span>个人</span>
+                    </p>
+                </div>
+            </div>
+            <div class="set">
+                <span>设为默认</span>
+                <p class="fr">
+                    <label class="select selected" for="set-default"></label>
+                    <input id="set-default" type="radio" name="set-default" value="">
+                </p>
+            </div>
+            <div class="save-btn">
+                保存
+            </div>
+        </form>
+    </div>
+</body>
+<script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+
+<script>
+$(function(){
+    $('.set .select').on('click',function(){
+        $(this).toggleClass('selected');
+    })
+    var checkFlag;
+    $('.type-item').on('click',function(){
+        console.log($(this).index());
+        $('.type .type-item .select').removeClass('selected');
+        $(this).children('.select').addClass('selected');
+    })
+    $('#answer-page input').on('click',function(){
+        this.checked = !(this.checked);
+    })
+    $('.save-btn').on('click',function(){
+        alert('保存成功!');
+        setTimeout(function(){
+            window.location.href = 'pay.html';
+        },300)
+    })
+
+})
+
+</script>
+</html>

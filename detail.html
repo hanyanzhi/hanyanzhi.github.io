@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>微商城</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <script type="text/javascript">
+    (function (doc, win) {
+        var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    window.clientWidth = docEl.clientWidth;
+                    if (!window.clientWidth) return;
+                    docEl.style.fontSize = 20 * (window.clientWidth / 320) + 'px';
+                    window.base = 20 * (window.clientWidth / 320);
+                };
+
+        try {
+            recalc();
+        } catch (e) {
+
+        }
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
+    </script>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/main.css?v='+Math.random()+'">
+</head>
+<body>
+    <div class="product-container">
+        <div class="detail-img">
+            <img src="img/product-detail.png" alt="" />
+        </div>
+        <div class="detail-content">
+            <h3 class="title">武夷山矿泉水</h3>
+            <p class="desc">
+                源自武夷 世界双遗 300米深 天然纯净 口感滑润 味觉回甘 微量元素 有益健康 佐茶好水 冲泡佳饮 武夷山水品着喝
+            </p>
+            <p>
+                <span class="price"><small>￥</small>99</span>
+                <span class="sales">销量：1000件</span>
+            </p>
+            <p><span class="lab">购买数量</span></p>
+            <p class="buynum">
+                <span class="redu kuang">-</span>
+                <input class="input-num" type="number" name="num" value="1">
+                <span class="add kuang">+</span>
+            </p>
+            <p class="specs">
+                <span class="lab">规格：</span>
+                <span>
+                    <span class="specs-num selected">300ml*24瓶</span>
+                    <span class="specs-num">500ml*24瓶</span>
+                    <span class="specs-num">1.5L*6瓶</span>
+                </span>
+            </p>
+        </div>
+        <div class="btn-wraper">
+            <!-- <a href="javascript:;"><span class="to-car">加入购物车</span></a>
+            <a href="pay.html"><span class="buy-now">立即购买</span></a> -->
+            <span class="to-car">加入购物车</span>
+            <span class="buy-now">立即购买</span>
+        </div>
+        <div class="car-float">
+            <!-- <a href="shopcar.html"><div class="car-all-num"><span class="small-font">9</span></div></a>
+            <div class="fly"><img src="img/waterM.png" alt=""></div> -->
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+
+<script>
+    $('.specs-num').click(function(){
+       var i = $(this).index();
+       $('.specs-num').removeClass('selected').eq(i).addClass('selected');
+    })
+    var buyNum = parseInt($('.buynum .input-num').val());  //每次购买数量
+    $('.buynum .redu').on('click',function(){
+        if ( buyNum <= 1) {
+            alert('宝贝不能再减了哦！');
+            buyNum = 1;
+            return;
+        }
+        buyNum--;
+        $('.buynum .input-num').val(buyNum);
+    })
+    $('.buynum .add').on('click',function(){
+        buyNum++;
+        $('.buynum .input-num').val(buyNum);
+    })
+    var allNum = parseInt($('.car-all-num span').html());  //购物车产品总数
+    $('.to-car').on('click',function(){
+        allNum += buyNum;
+        if (allNum >= 999) {
+            alert('购物车装不下了，先去清理一下吧！');
+            return;
+        }
+        $('.fly').addClass('flyAnimation');
+        setTimeout(function(){
+            $('.fly').removeClass('flyAnimation');
+            $('.car-all-num span').html(allNum);
+        },220)
+    })
+    $('.buy-now').on('click',function(){
+        window.location.href = 'pay.html';
+    })
+</script>
+</html>
