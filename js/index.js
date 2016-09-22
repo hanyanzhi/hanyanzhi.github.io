@@ -1,5 +1,5 @@
 $(function(){
-    var footerContent = '<a href="index.html" class="i_item fl active">'+
+    var footerContent = '<a href="index-home.html" class="i_item fl active">'+
                         '<span class="i_icon"></span></a>'+
                         '<a href="shopcar.html" class="i_item fl">'+
                         '<span class="i_icon"></span></a>'+
